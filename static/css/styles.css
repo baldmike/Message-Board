@@ -1,0 +1,27 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+.wrapper {
+    display: grid;
+}
+
+.header {
+    font-size: 20px;
+    grid-column-start: 1;
+    grid-column-end: 10;
+}
+
+.postForm {
+    grid-column-start: 1;
+    grid-column-end: 10;
+}
+
+.msgs {
+    grid-column-start: 3;
+    grid-column-end: 8;
+}

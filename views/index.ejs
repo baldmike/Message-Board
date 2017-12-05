@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>The Message Board</h1>
+            <hr>
+        </div>
+        <form class="postForm" action="/message" method="post">
+            <p>Your Name: </p>
+            <p><input type="text" name="name"><br></p>
+            <p>Your Message: </p> 
+            <p><textarea name="message" rows="5" cols="80"></textarea><br></p>
+            <p><input type="submit" id="post" value="Post Message"></p>
+        </form>
+        <div class="msgs">
+            <% if (messages) { %>
+                <% for (var i =0; i < messages.length; i ++) { %>
+                <p>Name: <%= messages[i].name %></p>
+                <p>Message: <%= messages[i].message %></p>
+                <hr>
+                <% for (var y=0; y < messages[i]._comments.length; y++)  { %>
+                    <h5><%="Name: " + messages[i]._comments[y].name %></h5>
+                    <h5><%="Comment: " + messages[i]._comments[y].comment %></h5>
+                    <% } %>
+                <form action=<%="/comment/" + messages[i]._id %> method="post">
+                    <p class="margin">Name: </p><input type="text" name="name">
+                    <p class="margin">Comment: </p><textarea name="comment"></textarea><br>
+                    <input class="post2" type="submit" value="Post comment">
+                </form>
+                <% } %>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+</html>
